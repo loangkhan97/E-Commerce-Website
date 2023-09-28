@@ -18,7 +18,7 @@ root.render(
         <App />
         </React.StrictMode>
       </ProductProvider>
-      </CartProvider>
+    </CartProvider>
   </SidebarProvider> 
 );
 

@@ -1,22 +1,22 @@
-import React, { createContext, useState, useEffect}  from 'react'
-import { IoMdTennisball } from 'react-icons/io';
+import React, {createContext, useState, useEffect} from 'react'
 
-// create context
-export const CartContext = createContext()
+//create context
+export const CartContext = createContext();
 
-const CartProvider = ({ Children }) => {
+const CartProvider = ({ children }) => {
   //cart state
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([])
+
   // add to cart
-  const addToCart = (product ,id) => {
-    const newItem = { ...product, amount: 1 }
+  const addToCart = (product, id) => {
+    const newItem = { ...product, amount: 1};
     // check if the item is already in the cart
     const CartItem = cart.find((item) => {
       return item.id === id;
     });
-    // if cart ite mis already in the cart
+    // if cart item is already in the cart
     if (CartItem) {
-      const newCart = [...cart].map((item) => {
+      const newCart = [...cart].map(item => {
         if(item.id === id) {
           return { ...item, amount: CartItem.amount + 1 };
         } else {
@@ -29,11 +29,24 @@ const CartProvider = ({ Children }) => {
     }
   };
 
+  //remove from cart
+  const removeFromCart = (id) => {
+    const newCart = cart.filter(item => {
+      return item.id !== id;
+    });
+    setCart(newCart);
+  };
+
+  // clear cart
+  const clearCart = () => {
+    setCart([]);
+  };
+  
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
-    { Children}
+    <CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart }}>
+    {children}
   </CartContext.Provider>
   )
-};
+}
 
 export default CartProvider;
