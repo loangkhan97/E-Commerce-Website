@@ -13,7 +13,7 @@ import { CartContext } from '../contexts/CartContext';
 
 const Sidebar = () => {
   const {isOpen, handleClose } = useContext(SidebarContext);
-  const { cart, clearCart } = useContext(CartContext);
+  const { cart, clearCart, total } = useContext(CartContext);
 
   return (
     <div 
@@ -40,7 +40,7 @@ const Sidebar = () => {
       <div className='flex w-full justify-between items-center'>
         {/* totle */}
         <div className='uppercase font-semibold'>
-          <span classNmae='mr-2'>Total</span>$ 1000
+          <span classNmae='mr-2'>Total</span>$ {parseFloat(total).toFixed(2)}
         </div>
         {/* clear cart icon */}
         <div onClick={clearCart} className='cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl'>
