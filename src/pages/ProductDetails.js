@@ -29,7 +29,7 @@ const ProductDetails = () => {
     <section className="pt-32 pb-12 lg:py-32 h-screen flex items-center">
     <div className="container mx-auto">
     {/* image and text wrapper */}
-    <div lassName='flex flex-col lg:flex-row items-center'>
+    <div className='flex flex-col lg:flex-row items-center'>
       {/* image */}
       <div className='flex flex-1 justify-center items-center mb-8 lg:mb-0'>
         <img  className='max-w-[200px] lg:max-w-sm' src={image} alt='' />
