@@ -21,4 +21,4 @@ root.render(
     </CartProvider>
   </SidebarProvider> 
 );
-
+ 
